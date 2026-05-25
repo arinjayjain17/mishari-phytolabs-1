@@ -1,0 +1,55 @@
+{
+  "entities": {
+    "onboardingSubmissions": {
+      "title": "OnboardingSubmission",
+      "description": "Onboarding registration submission for a secure procurement pipeline",
+      "type": "object",
+      "properties": {
+        "companyName": { "type": "string", "description": "Company name legal title" },
+        "contactName": { "type": "string", "description": "Full name of onboarding officer" },
+        "email": { "type": "string", "format": "email", "description": "Secure communications email" },
+        "licenseNo": { "type": "string", "description": "FDA or WHO precursor license ID" },
+        "targetCompound": { "type": "string", "description": "Target isolate compound" },
+        "targetKg": { "type": "string", "description": "Expected volumetric cargo scale in KG" },
+        "useCase": { "type": "string", "description": "Compound use-case justification details" },
+        "dealHash": { "type": "string", "description": "Generated unique transactional cryptographic identifier" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Submission timestamp" }
+      },
+      "required": ["companyName", "contactName", "email", "licenseNo", "targetCompound", "targetKg", "dealHash", "createdAt"]
+    },
+    "productInfo": {
+      "title": "ProductInfo",
+      "description": "Product active pharmaceutical ingredients and active molecules catalog item",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique identifier of the compound" },
+        "category": { "type": "string", "description": "Category of compound (pharmaceuticals, nutraceuticals, supplements)" },
+        "name": { "type": "string", "description": "Display name of the product" },
+        "chemicalName": { "type": "string", "description": "IUPAC or systematic nomenclature" },
+        "casNo": { "type": "string", "description": "Chemical Abstracts Service registry number" },
+        "purity": { "type": "string", "description": "Assay or compound purity specification" },
+        "tag": { "type": "string", "description": "Classification tag representation" },
+        "description": { "type": "string", "description": "Detailed properties and description narrative" },
+        "molecularFormula": { "type": "string", "description": "Chemical molecular formula syntax" },
+        "molecularWeight": { "type": "number", "description": "Molecular mass specification" },
+        "extractionMethod": { "type": "string", "description": "Source and extraction process" },
+        "heavyMetals": { "type": "string", "description": "Toxicity limits for heavy metals" },
+        "appearance": { "type": "string", "description": "Physical color and texturing profile" },
+        "shelfLife": { "type": "string", "description": "Maximum shelf-life safety blanket duration" },
+        "certifications": { "type": "array", "description": "List of certified standards" },
+        "suggestedUse": { "type": "string", "description": "Suggested clinical or functional applications" }
+      },
+      "required": ["id", "category", "name", "chemicalName", "casNo", "purity", "tag", "description", "molecularFormula", "molecularWeight", "extractionMethod", "heavyMetals", "appearance", "shelfLife", "certifications", "suggestedUse"]
+    }
+  },
+  "firestore": {
+    "/onboardings/{submissionId}": {
+      "schema": "onboardingSubmissions",
+      "description": "Secure procurement onboarding submissions"
+    },
+    "/products/{productId}": {
+      "schema": "productInfo",
+      "description": "Catalog of procurement products"
+    }
+  }
+}

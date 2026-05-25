@@ -1,0 +1,6 @@
+{
+  "name": "Mishari Phytolabs",
+  "description": "Strategic Global Gateway for high-purity Pharmaceutical & Nutraceutical Ingredients, featuring cryptographic compliance verification, product indexes, and interactive molecular tracking gateways.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

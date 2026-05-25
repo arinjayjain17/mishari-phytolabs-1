@@ -1,0 +1,23 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Zero-Trust Default Deny Catch-All
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Secure Procurement Onboarding Form Submissions
+    match /onboardings/{submissionId} {
+      // Anyone can submit an onboarding application
+      allow create: if true;
+      // Nobody on the client sides can read, update or delete these records to protect PII
+      allow read, update, delete: if false;
+    }
+
+    // Products collection holding compound specification inventory items
+    match /products/{productId} {
+      // Publicly readable for compound catalogs; writable for app database seeding
+      allow read, write: if true;
+    }
+  }
+}
